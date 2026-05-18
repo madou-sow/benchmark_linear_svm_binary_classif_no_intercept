@@ -41,26 +41,25 @@ to conclude the main differences between tools, Benchopt is for supervised tasks
 It is recommended to use benchopt within a conda environment to fully-benefit from benchopt Command Line Interface (CLI).
 run in a terminal
 
-```p install -U benchopt
+```
+## Then run the following command to install the latest release of benchopt
+p install -U benchopt
 
 ## Clone the benchmark repository and cd to it
 git clone https://github.com/madou-sow /benchopt/benchmark_linear_svm_binary_classif_no_intercept
 
 ## start by creating a new conda environment and then activate it
+conda create -n benchopt python
 conda activate benchopt
 cd benchmark_linear_svm_binary_classif_no_intercept
 
 ## Install the desired solvers automatically with benchopt
 benchopt install -s sklearn -s cd -s lightning
 
-### Full run (all datasets)
-benchopt run
+## Full run (all datasets)
+benchopt run ./benchmark_linear_svm_binary_classif_no_intercept
 
-# Run on a specific dataset
-benchopt run -d svm_cluster
+## Run with options can be passed to benchopt run, to restrict the benchmarks to some solvers or datasets
+benchopt run ./benchmark_linear_svm_binary_classif_no_intercept -s sklearn -d simulated --max-runs 200
 
-# Run with options (specific solver and dataset)
-# benchopt run ./benchmark_linear_svm_binary_classif_no_intercept -s sklearn -d simulated --max-runs 100
-
-print("Benchopt configuration ready.")
 ``` 
