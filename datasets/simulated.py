@@ -1,3 +1,8 @@
+'''
+Implemented : Mamadou S.
+Date : 2026, April 03
+'''
+
 from benchopt import BaseDataset, safe_import_context
 
 with safe_import_context() as import_ctx:
@@ -25,7 +30,7 @@ class Dataset(BaseDataset):
             random_state=self.random_state
         )
         y = 2*(y > 0) - 1
-        #data = dict(X=X, y=y)
-        #return self.n_features, data
-        #return data
-        return dict(X=X, y=y) # Supprimé self.n_features
+        # data = dict(X=X, y=y)
+        # return self.n_features, data
+        # return data
+        return dict(X=X, y=y) # Delete self.n_features
