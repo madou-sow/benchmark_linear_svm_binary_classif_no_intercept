@@ -32,11 +32,6 @@ where :
 
 ### The Benchopt Framework
 
-**Benchopt** is an open-source benchmarking framework for optimization algorithms that guarantees the **reproducibility** and **fairness** of comparisons. It standardizes the interface between solvers and problems, manages dependencies, results caching, and visualization. Benchmarking suite tailored for machine learning workflows. Benchopt enforces a clean
-separation between problem definitions, data sources, and solver implementations, ensuring
-that every algorithm solves the same mathematical problem under identical stopping conditions.
-The framework automatically handles dependency management, result caching, and interactive
-visualization of convergence curves.  Benchopt can benchmark machine learning pipelines, including preprocessing,
-hyperparameters, etc. Benchopt uses accuracy metrics. Benchopt can
-run on many frameworks: scikit-learn, PyTorch, etc and is actively maintained. Morevoer and
-to conclude the main differences between tools, Benchopt is for supervised tasks
+**Benchopt** is an open-source benchmarking framework for optimization algorithms that guarantees the **reproducibility** and **fairness** of comparisons. It standardizes the interface between solvers and problems, manages dependencies, results caching, and visualization. Benchmarking suite tailored for machine learning workflows. Benchopt enforces a clean separation between problem definitions, data sources, and solver implementations, ensuring
+that every algorithm solves the same mathematical problem under identical stopping conditions. The framework automatically handles dependency management, result caching, and interactive visualization of convergence curves.  Benchopt can benchmark machine learning pipelines, including preprocessing, hyperparameters, etc. Benchopt uses accuracy metrics. Benchopt can run on many frameworks: scikit-learn, PyTorch, etc and is actively maintained. Morevoer and
+to conclude the main differences between tools, Benchopt is for supervised tasks.
