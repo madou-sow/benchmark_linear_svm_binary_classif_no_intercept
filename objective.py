@@ -21,14 +21,14 @@ class Objective(BaseObjective):
         return dict(beta=np.zeros(self.n_features))
 
     def evaluate_result(self, beta):
-        # On calcule le score pour y * (X @ beta)
+        # We calculate the score for y * (X @ beta)
         projected_labels = self.X @ beta
         hinge_loss = np.maximum(1 - self.y * projected_labels, 0.).sum()
         
         loss = self.C * hinge_loss
         pen = 0.5 * np.dot(beta, beta)
         return loss + pen
-    #def compute(self, beta):
+    # def compute(self, beta):
     #    loss = self.C * np.sum(
     #        np.maximum(1 - self.y * (self.X @ beta), 0.)
     #    )
