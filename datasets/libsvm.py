@@ -1,3 +1,8 @@
+'''
+Implemented : Mamadou S.
+Date : 2026, April 3
+'''
+
 from benchopt import BaseDataset
 
 from benchopt import safe_import_context
@@ -29,4 +34,4 @@ class Dataset(BaseDataset):
         #data = dict(X=self.X, y=self.y)
         #return self.X.shape[1], data
         #return data
-        return dict(X=self.X, y=self.y) # Supprimé self.X.shape[1]
+        return dict(X=self.X, y=self.y) # Delete self.X.shape[1]
