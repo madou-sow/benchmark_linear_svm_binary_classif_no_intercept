@@ -112,7 +112,15 @@ Here is the content of the directory **benchmark_linear_svm_binary_classif_no_in
     |-sklearn.cpython-311.pyc
 ```
 
-#### Datasets (Data)
+##### The Heart of the Benchmark
+
+**objective.py:**
+
+Definition: This is the central file that defines the mathematical problem to be solved.
+
+Role: It contains the Objective class, which specifies the loss function (here, the Hinge Loss for the SVM) and the penalty (L2). It also defines how to evaluate the performance of a solver via the evaluate_result method (calculating the primal objective).
+
+##### Datasets (Data)
 
 These files provide the X matrices (characteristics) and the y vectors (targets/labels) to the objective.
 
@@ -125,14 +133,17 @@ Role: Contains real-world measurements (CO2, Temperature) associated with cluste
 **datasets/cluster1data5120w512.py:**
 
 Definition: A Python script that inherits from BaseDataset.
+
 Role: Loads the CSV file above, cleans the data, and transforms it into a binary classification problem (e.g., Class 1 vs. the rest) to make it compatible with the SVM objective.
 
 **datasets/libsvm.py:**
 
 Definition: A wrapper for data from the LibSVM library.
+
 Role: Automatically downloads reference datasets (such as news20) from the internet to test solvers on large, sparse datasets.
 
 **datasets/simulated.py:**
 
 Definition: Synthetic data generator.
+
 Role: Creates controlled random data (number of samples, number of variables) to test the behavior of algorithms under specific theoretical conditions.
