@@ -1,6 +1,10 @@
 '''
 Implemented : Mamadou S.
 Date : 2026, April 3
+
+Definition: Wrapper for data from the LibSVM library.
+Role: Automatically downloads reference datasets (such as news20) 
+      from the internet to test solvers on large and sparse (thin) datasets.
 '''
 
 from benchopt import BaseDataset
