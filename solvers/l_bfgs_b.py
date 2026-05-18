@@ -1,6 +1,11 @@
 from benchopt import BaseSolver, safe_import_context
 from benchopt.stopping_criterion import SufficientProgressCriterion
 
+'''
+Implemented : Mamadou S.
+Date : 2026, April 03
+'''
+
 
 with safe_import_context() as import_ctx:
     import numpy as np
