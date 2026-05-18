@@ -1,6 +1,14 @@
 '''
 Implemented : Mamadou S.
 Date : 2026, April 3
+Definition: A Python script that inherits from BaseDataset.
+Role: Loads the CSV file above, cleans the data, and transforms it into a binary classification problem
+     (e.g., Class 1 vs. the rest) to ensure compatibility with the SVM objective.
+
+cluster1data5120w512.csv
+Definition: A raw data file in CSV format.
+Role: Contains actual measurements (CO2, Temperature) associated with clusters. 
+It is the "field" data source.
 '''
 
 from benchopt import BaseDataset, safe_import_context
