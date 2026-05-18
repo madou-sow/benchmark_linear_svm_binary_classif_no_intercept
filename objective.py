@@ -1,3 +1,12 @@
+'''
+Implemented : Mamadou S.
+Date : 2026, April 03
+Definition: This is the central file that defines the mathematical problem to be solved.
+Role: It contains the Objective class, which specifies the loss function 
+      (here, the Hinge Loss for the SVM) and the penalty (L2). It also defines 
+      how to evaluate the solver's performance using the evaluate_result method (calculating the primal objective).
+'''
+
 import numpy as np
 from benchopt import BaseObjective
 
