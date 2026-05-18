@@ -35,3 +35,33 @@ where :
 **Benchopt** is an open-source benchmarking framework for optimization algorithms that guarantees the **reproducibility** and **fairness** of comparisons. It standardizes the interface between solvers and problems, manages dependencies, results caching, and visualization. Benchmarking suite tailored for machine learning workflows. Benchopt enforces a clean separation between problem definitions, data sources, and solver implementations, ensuring
 that every algorithm solves the same mathematical problem under identical stopping conditions. The framework automatically handles dependency management, result caching, and interactive visualization of convergence curves.  Benchopt can benchmark machine learning pipelines, including preprocessing, hyperparameters, etc. Benchopt uses accuracy metrics. Benchopt can run on many frameworks: scikit-learn, PyTorch, etc and is actively maintained. Morevoer and
 to conclude the main differences between tools, Benchopt is for supervised tasks.
+
+### Installing Benchopt and cloning the benchmark
+
+It is recommended to use benchopt within a conda environment to fully-benefit from benchopt Command Line Interface (CLI).
+run in a terminal
+
+'''
+pip install -U benchopt
+
+## Clone the benchmark repository and cd to it
+git clone https://github.com/madou-sow /benchopt/benchmark_linear_svm_binary_classif_no_intercept
+
+## start by creating a new conda environment and then activate it
+conda activate benchopt
+cd benchmark_linear_svm_binary_classif_no_intercept
+
+## Install the desired solvers automatically with benchopt
+benchopt install -s sklearn -s cd -s lightning
+
+### Full run (all datasets)
+benchopt run
+
+# Run on a specific dataset
+benchopt run -d svm_cluster
+
+# Run with options (specific solver and dataset)
+# benchopt run ./benchmark_linear_svm_binary_classif_no_intercept -s sklearn -d simulated --max-runs 100
+
+print("Benchopt configuration ready.")
+'''
