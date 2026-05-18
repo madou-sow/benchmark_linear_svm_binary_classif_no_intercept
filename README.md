@@ -111,3 +111,28 @@ Here is the content of the directory **benchmark_linear_svm_binary_classif_no_in
     |-lightning.cpython-311.pyc
     |-sklearn.cpython-311.pyc
 ```
+
+#### Datasets (Data)
+
+These files provide the X matrices (characteristics) and the y vectors (targets/labels) to the objective.
+
+**datasets/cluster1data5120w512.csv:**
+
+Definition: A raw data file in CSV format.
+
+Role: Contains real-world measurements (CO2, Temperature) associated with clusters. This is the "field" data source.
+
+**datasets/cluster1data5120w512.py:**
+
+Definition: A Python script that inherits from BaseDataset.
+Role: Loads the CSV file above, cleans the data, and transforms it into a binary classification problem (e.g., Class 1 vs. the rest) to make it compatible with the SVM objective.
+
+**datasets/libsvm.py:**
+
+Definition: A wrapper for data from the LibSVM library.
+Role: Automatically downloads reference datasets (such as news20) from the internet to test solvers on large, sparse datasets.
+
+**datasets/simulated.py:**
+
+Definition: Synthetic data generator.
+Role: Creates controlled random data (number of samples, number of variables) to test the behavior of algorithms under specific theoretical conditions.
