@@ -147,3 +147,4 @@ Role: Automatically downloads reference datasets (such as news20) from the inter
 Definition: Synthetic data generator.
 
 Role: Creates controlled random data (number of samples, number of variables) to test the behavior of algorithms under specific theoretical conditions.
+
