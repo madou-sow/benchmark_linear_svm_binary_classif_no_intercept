@@ -1,6 +1,10 @@
 '''
 Implemented : Mamadou S.
 Date : 2026, April 03
+
+Definition: Synthetic data generator.
+Role: Creates controlled random data (number of samples, number of variables) 
+      to test the behavior of algorithms under specific theoretical conditions.
 '''
 
 from benchopt import BaseDataset, safe_import_context
