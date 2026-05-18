@@ -56,10 +56,57 @@ cd benchmark_linear_svm_binary_classif_no_intercept
 ## Install the desired solvers automatically with benchopt
 benchopt install -s sklearn -s cd -s lightning
 
+# Run on a specific dataset
+# benchopt run ./benchmark_linear_svm_binary_classif_no_intercept -d svm_cluster
+
 ## Full run (all datasets)
 benchopt run ./benchmark_linear_svm_binary_classif_no_intercept
 
-## Run with options can be passed to benchopt run, to restrict the benchmarks to some solvers or datasets
+## Run with options can be passed to benchopt run, to restrict the benchmarks to some solvers and/or datasets
 benchopt run ./benchmark_linear_svm_binary_classif_no_intercept -s sklearn -d simulated --max-runs 200
 
-``` 
+```
+
+#### Directory Struture 
+
+Here is the content of the directory **benchmark_linear_svm_binary_classif_no_intercept**:
+
+```       
+
+|-__cache__
+|-__pycache__
+|-objective.py
+|-test_config.py
+|-datasets:
+    |-__pycache__
+    |-cluster1data5120w512.csv
+    |-cluster1data5120w512.py
+    |-libsvm.py
+    |-simulated.py
+
+|-datasets/__pycache__:
+            |-cluster1data5120w512.cpython-311.pyc
+            |-libsvm.cpython-311.pyc
+            |-simulated.cpython-311.pyc
+
+|-outputs:
+    |-benchmark_linear_svm_binary_classif_no_intercept.html
+    |-benchmark_linear_svm_binary_classif_no_intercept_benchopt_run_2026-04-21_12h26m51.html
+    |-benchmark_linear_svm_binary_classif_no_intercept_benchopt_run_2026-04-21_12h44m46.html
+    |-benchopt_run_2026-04-21_12h26m51.parquet
+    |-benchopt_run_2026-04-21_12h44m46.parquet
+    |-cache_run_list.json
+
+|-solvers:
+    |-__pycache__
+    |-cd.py
+    |-l_bfgs_b.py
+    |-lightning.py
+    |-sklearn.py
+
+|-solvers/__pycache__:
+    |-cd.cpython-311.pyc
+    |-l_bfgs_b.cpython-311.pyc
+    |-lightning.cpython-311.pyc
+    |-sklearn.cpython-311.pyc
+```
