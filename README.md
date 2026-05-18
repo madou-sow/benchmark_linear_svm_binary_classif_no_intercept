@@ -6,7 +6,7 @@
 
 > **Objective :** Comparative evaluation of four solvers using the BenOpt (**Liblinear (Sklearn)**, **Lightning**, **CD**, and **L-BFGS-B**) focusing on their convergence speed, accuracy, and stability with raw or normalized data.
 
-> **Definition :** Benchopt is an open-source benchmarking framework for optimization algorithms that guarantees the reproducibility and fairness of comparisons
+> **Tools Used :** Benchopt Framework is an open-source benchmarking framework for optimization algorithms that guarantees the reproducibility and fairness of comparisons
 
 
 ## Support Vector Machines: Theoretical Foundations
@@ -17,7 +17,7 @@ Support Vector Machines (SVMs) are one of the most important classes of supervis
 
 2. **The Kernel Trick**: Projecting data into a higher-dimensional representation space using a kernel function allows handling non-linearly separable cases without explicitly calculating the transformation.
 
-## 2 Binary Classification by Linear SVM
+## Binary Classification by Linear SVM
 
 In the case of binary SVM, the algorithm separates two classes by creating an optimal hyperplane in the feature space. The primal optimization problem is written as :
 
@@ -27,3 +27,9 @@ where :
 - $\frac{1}{2}\|\beta\|_2^2$ : regularization term $L_2$ (strict convexity)
 - $\max(0, 1 - y_i x_i^\top \beta)$ : **Hinge loss** (convex, but not differentiable in $y_i x_i^\top \beta = 1$)
 - $C > 0$ : compromise parameter margin / classification errors
+
+## Experimental Methodology
+
+### The Benchopt Framework
+
+**Benchopt** is an open-source benchmarking framework for optimization algorithms that guarantees the **reproducibility** and **fairness** of comparisons. It standardizes the interface between solvers and problems, manages dependencies, results caching, and visualization. Benchmarking suite tailored for machine learning workflows
