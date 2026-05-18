@@ -120,7 +120,7 @@ Definition: This is the central file that defines the mathematical problem to be
 
 Role: It contains the Objective class, which specifies the loss function (here, the Hinge Loss for the SVM) and the penalty (L2). It also defines how to evaluate the performance of a solver via the evaluate_result method (calculating the primal objective).
 
-##### Datasets (Data)
+### 5.Datasets (Data)
 
 These files provide the X matrices (characteristics) and the y vectors (targets/labels) to the objective.
 
