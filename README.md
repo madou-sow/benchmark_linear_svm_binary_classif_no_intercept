@@ -36,7 +36,7 @@ where :
 that every algorithm solves the same mathematical problem under identical stopping conditions. The framework automatically handles dependency management, result caching, and interactive visualization of convergence curves.  Benchopt can benchmark machine learning pipelines, including preprocessing, hyperparameters, etc. Benchopt uses accuracy metrics. Benchopt can run on many frameworks: scikit-learn, PyTorch, etc and is actively maintained. Morevoer and
 to conclude the main differences between tools, Benchopt is for supervised tasks.
 
-### Installing Benchopt and cloning the benchmark
+### Installing Benchopt, cloning the benchmark and getting started
 
 It is recommended to use benchopt within a conda environment to fully-benefit from benchopt Command Line Interface (CLI).
 run in a terminal
