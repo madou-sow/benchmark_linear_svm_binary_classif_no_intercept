@@ -69,7 +69,7 @@ benchopt run ./benchmark_linear_svm_binary_classif_no_intercept -s sklearn -d si
 
 #### Directory Struture 
 
-Here is the content of the directory **benchmark_linear_svm_binary_classif_no_intercept**:
+Here is the content of the directory **benchmark_linear_svm_binary_classif_no_intercept** after running the program benchopt :
 
 ```       
 
