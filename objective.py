@@ -12,6 +12,10 @@ from benchopt import BaseObjective
 
 
 class Objective(BaseObjective):
+    """
+    Objectif : SVM Binary Classification (no intercept)
+    Minimise : P(β) = (1/2)||β||² + C * Σ max(0, 1 - yᵢ xᵢᵀ β)
+    """
     min_benchopt_version = "1.3"
     name = "SVM Binary Classification (no intercept)"
 
