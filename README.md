@@ -81,6 +81,7 @@ Here is the content of the directory **benchmark_linear_svm_binary_classif_no_in
     |-__pycache__
     |-cluster1data5120w512.csv
     |-cluster1data5120w512.py
+    |-cluster1data5120w512SS.py
     |-libsvm.py
     |-simulated.py
 
