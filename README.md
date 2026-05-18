@@ -183,43 +183,8 @@ Definition: Cache index file.
 `outputs/cache_run_list.json`:
 
 Definition: Cache index file.
-``` Purpose: Benchopt uses this to determine which combinations (Solver/Dataset/Parameters) have already been executed. This avoids rerunning lengthy calculations if nothing has changed, saving time during subsequent runs.
 
-```python
-import pandas as pd
+Purpose: Benchopt uses this to determine which combinations (Solver/Dataset/Parameters) have already been executed. This avoids rerunning lengthy calculations if nothing has changed, saving time during subsequent runs.
 
-# ─────────────────────────────────────────────
-# Summary table of observed results
-# ─────────────────────────────────────────────
-results = {
-    'Dataset / Parameter': [
-        'libsvm (C=1.0)',
-        'libsvm (C=0.1)',
-        'svm_cluster brut (C=1.0)',
-        'svm_cluster brut (C=0.1)',
-        'svm_cluster_ss (C=1.0)',
-        'Simulated n=1000 (C=1.0) — time',
-    ],
-    'Sklearn': ['~2562.54', '~902.55 ✅', '~817.45 ⚠️', '~80.94', '~287 ✅', '1.64s'],
-    'Lightning': ['~2562.54', '~2033.67 ⚠️', '~226.68 ✅', '~82.51', '~287 ✅', '0.24s ⭐'],
-    'CD': ['—', '—', 'oscillations ⚠️', '—', '~287 ✅', '1.85s'],
-    'L-BFGS-B': ['~2562 (approx)', '—', '—', '—', '~287 ✅', '8.02s'],
-}
 
-df_results = pd.DataFrame(results).set_index('Dataset / Parameter')
-
-df_results.style\
-    .set_caption("Table 1 — Summary of target values P(β) and convergence time")\
-    .set_table_styles([{
-        'selector': 'th',
-        'props': [('background-color', '#1F3864'), ('color', 'white'),
-                  ('font-weight', 'bold'), ('text-align', 'center')]
-    }, {
-        'selector': 'td',
-        'props': [('text-align', 'center'), ('font-family', 'monospace')]
-    }, {
-        'selector': 'caption',
-        'props': [('font-weight', 'bold'), ('font-size', '13px'), ('color', '#1F3864')]
-    }])
-```
 
