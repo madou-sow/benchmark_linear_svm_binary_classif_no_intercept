@@ -553,3 +553,13 @@ print("Figure 2: Comparison of solvers")
 ## 6. In-Depth Comparative Analysis of Solvers
 
 <img alt="Qualitative summary of strengths and weaknesses — effect of normalization" src="https://github.com/madou-sow/benchmark_linear_svm_binary_classif_no_intercept/blob/main/figures/qualitativeSummaryStrengthWeak.png"  title="Qualitative summary of strengths and weaknesses"/>
+
+## 7. Impact of the StandardScaler: Why Normalization Changes Everything
+
+Without normalization, the CO2 variable ($\in [200, 400]$) dominates the T(°C) variable ($\in [18, 24]$) with an **amplitude ratio ≈ 20×**. This disparity is directly reflected in the structure of the Hessian :
+
+$$H \approx X^\top X \propto \begin{pmatrix} 300^2 & \cdot \\ \cdot & 21^2 \end{pmatrix} \quad \Rightarrow \quad \kappa(H) = \frac{\lambda_{\max}}{\lambda_{\min}} \approx \left(\frac{300}{21}\right)^2 \approx 204$$
+
+After normalization : $\kappa(H) \approx 1$, the problem becomes **well conditioned**.
+
+
