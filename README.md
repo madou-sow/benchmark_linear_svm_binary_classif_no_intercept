@@ -40,6 +40,42 @@ While the theoretical formulation is robust, its implementation raises important
 
 This study provides **empirical and quantitative** answers to these questions.
 
+## Theoretical Framework and Mathematical Formulation
+
+### Primal and Dual Formulation
+
+The dual problem associated with the linear SVM, obtained using the **Karush-Kuhn-Tucker (KKT)** conditions, is expressed in terms of dual variables $\alpha_i \in [0, C]$ :
+
+$$\max_{\alpha \in \mathbb{R}^n} D(\alpha) = \sum_i \alpha_i - \frac{1}{2} \alpha^\top Q \alpha \quad \text{under duress} 0 \leq \alpha_i \leq C$$
+
+where $Q_{ij} = y_i y_j x_i^\top x_j$ is the **Gram matrix**. Strong duality guarantees $P(\beta^*) = D(\alpha^*)$, and the primal-dual relationship is $\beta^* = \sum_i \alpha_i y_i x_i$.
+
+### Hinge Loss and its Algorithmic Implications
+
+The Hinge Loss $h(u) = \max(0, 1-u)$ is convex but **not differentiable at $u=1$**. This singularity has major consequences:
+
+| Method Type | Impact of Non-Differentiability |
+|:---|:---|
+| First-order (gradient, CD) | Work on subgradients — **unaffected** |
+| Second-order (L-BFGS-B) | The Hessian is zero p.p. and undefined at $u=1$ — **penalized** |
+
+### Conditioning and Geometry
+
+The conditioning of the problem is measured by $\kappa(H)$, the **conditioning number** of the Hessian. A high $\kappa$ implies very elongated isovalue curves (ellipsoids). Normalization transforms:
+
+$$\tilde{x}_{ij} = \frac{x_{ij} - \mu_j}{\sigma_j}$$
+
+making the Hessian more **isotropic** ($\kappa \rightarrow 1$) and allowing for rapid convergence in all directions.
+
+### The Four Solvers Studied
+
+| Solver | Family | Implementation | Complexity/iter |
+|:---|:---|:---|:---|
+| **Sklearn (Liblinear)** | Dual Coordinate Descent | Optimized C++ | $O(\text{nnz}(x_i))$ |
+| **Lightning** | Stochastic SDCA | C++/Cython | $O(p)$ on average |
+| **CD** | Primal Coordinate Descent | Python/Numba | $O(p)$ |
+|**L-BFGS-B** | Quasi-Newton (2nd order) | SciPy (Fortran) | $O(mp)$, $m$ stored vectors |
+
 ## Experimental Methodology
 
 ### 1. The Benchopt Framework
