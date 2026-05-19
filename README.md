@@ -256,6 +256,7 @@ This function is called identically for every solver, guaranteeing a fair compar
 #### 4.2.1 `svm_cluster` — Small Real-World Data
 
 ```python
+
 import pandas as pd
 import os
 
@@ -420,6 +421,7 @@ $$\Delta\alpha_i^* \propto \frac{1}{\|x_i\|^2}$$
 With CO2 values ​​exceeding 300, the steps are extremely small in this direction, forcing Sklearn to stagnate in a region of near-zero gradient.
 
 ```python
+
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
@@ -465,7 +467,7 @@ plt.savefig('~/benchmark_linear_svm_binary_classif_no_intercept/figures/figure1_
 plt.show()
 print("Figure 1: Optimization landscape — effect of normalization")
 
-``̀`
+```
 
 
 
