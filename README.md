@@ -2,18 +2,18 @@
 
 ## Abstract
 
-> **Background :** Support Vector Machines (SVMs) are a fundamental class of supervised learning algorithms. While their theoretical formulation is robust, the efficiency of their numerical implementation depends on the solvers' ability to handle quadratic optimization problems, which are often sensitive to data scaling.
+> **Background:** Support Vector Machines (SVMs) are a fundamental class of supervised learning algorithms. While their theoretical formulation is robust, the efficiency of their numerical implementation depends on the solvers' ability to handle quadratic optimization problems, which are often sensitive to data scaling.
 
-> **Objective :** Comparative evaluation of four solvers using the BenOpt (**Liblinear (Sklearn)**, **Lightning**, **CD**, and **L-BFGS-B**) focusing on their convergence speed, accuracy, and stability with raw or normalized data.
+> **Objective:** Comparative evaluation of four solvers (**Liblinear (Sklearn)**, **Lightning**, **CD**, and **L-BFGS-B**), using the BenOpt, focusing on their convergence speed, accuracy, and stability with raw or normalized data.
 
-> **Major Result :** The consistent use of the Standard Scaler has a greater impact on performance than choosing between Sklearn and Lightning. The geometry of the data (conditioning of the Hessian) determines the intrinsic difficulty of the optimization problem.
+> **Major Result:** The consistent use of the Standard Scaler has a greater impact on performance than choosing between Sklearn and Lightning. The geometry of the data (conditioning of the Hessian) determines the intrinsic difficulty of the optimization problem.
 
-> **Tools Used :** Benchopt Framework is an open-source benchmarking framework for optimization algorithms that guarantees the reproducibility and fairness of comparisons
+> **Tools Used:** Benchopt Framework is an open-source benchmarking framework for optimization algorithms that guarantees the reproducibility and fairness of comparisons
 
 ## 1. Introduction and Context
 ### 1.1. Support Vector Machines: Theoretical Foundations
 
-Support Vector Machines (SVMs) are one of the most important classes of supervised learning algorithms in the history of machine learning. Developed in the 1990s based on the theoretical considerations of Vladimir Vapnik on the statistical theory of learning (the Vapnik-Chervonenkis theory) they rely on two fundamental key ideas:
+Support Vector Machines (SVMs) are one of the most important classes of supervised learning algorithms in the history of machine learning. Developed in the 1990s based on the theoretical considerations of Vladimir Vapnik on the statistical theory of learning (the Vapnik-Chervonenkis theory), they rely on two fundamental key ideas:
 
 1. The notion of maximum margin: The margin is the distance between the separating hyperplane and the nearest samples (the support vectors). The maximum margin separation boundary has the smallest capacity, ensuring better generalization.
 
@@ -26,17 +26,17 @@ In the case of binary SVM, the algorithm separates two classes by creating an op
 $$\min_{\beta \in \mathbb{R}^p} P(\beta) = \frac{1}{2}\|\beta\|_2^2 + C \sum_{i=1}^{n} \max\left(0, 1 - y_i x_i^\top \beta\right)$$
 
 where :
-- $\frac{1}{2}\|\beta\|_2^2$ : regularization term $L_2$ (strict convexity)
-- $\max(0, 1 - y_i x_i^\top \beta)$ : **Hinge loss** (convex, but not differentiable in $y_i x_i^\top \beta = 1$)
-- $C > 0$ : compromise parameter margin / classification errors
+- $\frac{1}{2}\|\beta\|_2^2$ : regularization term $L_2$ (strict convexity);
+- $\max(0, 1 - y_i x_i^\top \beta)$ : **Hinge loss** (convex, but not differentiable in $y_i x_i^\top \beta = 1$);
+- $C > 0$: compromise parameter margin/classification errors.
 
 ### 1.3. Problem Statement and Motivation
 
 While the theoretical formulation is robust, its implementation raises important practical questions :
 
- - Which solver should be chosen based on the data structure ? 
- - What is the impact of normalization on convergence ?
- - How does the parameter $C$ influence the problem's difficulty ?
+ - Which solver should be chosen based on the data structure? 
+ - What is the impact of normalization on convergence?
+ - How does the parameter $C$ influence the problem's difficulty?
 
 This study provides **empirical and quantitative** answers to these questions.
 
@@ -44,7 +44,7 @@ This study provides **empirical and quantitative** answers to these questions.
 
 ### 2.1. Primal and Dual Formulation
 
-The dual problem associated with the linear SVM, obtained using the **Karush-Kuhn-Tucker (KKT)** conditions, is expressed in terms of dual variables $\alpha_i \in [0, C]$ :
+The dual problem associated with the linear SVM, obtained using the **Karush-Kuhn-Tucker (KKT)** conditions, is expressed in terms of dual variables $\alpha_i \in [0, C]$:
 
 $$\max_{\alpha \in \mathbb{R}^n} D(\alpha) = \sum_i \alpha_i - \frac{1}{2} \alpha^\top Q \alpha \quad \text{under duress} 0 \leq \alpha_i \leq C$$
 
@@ -81,12 +81,11 @@ making the Hessian more **isotropic** ($\kappa \rightarrow 1$) and allowing for 
 ### 3.1. The Benchopt Framework
 
 **Benchopt** is an open-source benchmarking framework for optimization algorithms that guarantees the **reproducibility** and **fairness** of comparisons. It standardizes the interface between solvers and problems, manages dependencies, results caching, and visualization. Benchmarking suite tailored for machine learning workflows. Benchopt enforces a clean separation between problem definitions, data sources, and solver implementations, ensuring
-that every algorithm solves the same mathematical problem under identical stopping conditions. The framework automatically handles dependency management, result caching, and interactive visualization of convergence curves.  Benchopt can benchmark machine learning pipelines, including preprocessing, hyperparameters, etc. Benchopt uses accuracy metrics. Benchopt can run on many frameworks: scikit-learn, PyTorch, etc and is actively maintained. Morevoer and
-to conclude the main differences between tools, Benchopt is for supervised tasks.
+that every algorithm solves the same mathematical problem under identical stopping conditions. The framework automatically handles dependency management, result caching, and interactive visualization of convergence curves.  Benchopt can benchmark machine learning pipelines, including preprocessing, hyperparameters, etc. Benchopt uses accuracy metrics. Benchopt can run on many frameworks: scikit-learn, PyTorch, etc., and is actively maintained. Moreover, to conclude the main differences between tools, Benchopt is for supervised tasks.
 
-### 3.2. Installing Benchopt, cloning the benchmark and getting started
+### 3.2. Installing Benchopt, cloning the benchmark, and getting started
 
-It is recommended to use benchopt within a conda environment to fully-benefit from benchopt Command Line Interface (CLI).
+It is recommended to use benchopt within a conda environment to fully benefit from the Benchopt Command Line Interface (CLI).
 run in a terminal
 
 ```
@@ -115,9 +114,9 @@ benchopt run ./benchmark_linear_svm_binary_classif_no_intercept -s sklearn -d si
 
 ```
 
-### 3.3. Directory Struture 
+### 3.3. Directory Structure 
 
-Here is the content of the directory **benchmark_linear_svm_binary_classif_no_intercept** after running the program benchopt :
+Here is the content of the directory **benchmark_linear_svm_binary_classif_no_intercept** after running the program benchopt:
 
 ```       
 
@@ -251,7 +250,7 @@ def evaluate_result(self, beta):
 
 This function is called identically for every solver, guaranteeing a fair comparison. The parameter $C$ is evaluated at two values: **C = 1.0** (moderate regularization) and **C = 0.1** (strong regularization).
 
-### 4.2 Datasets : Description and Loading
+### 4.2 Datasets: Description and Loading
 
 #### 4.2.1 `svm_cluster` — Small Real-World Data
 
@@ -297,7 +296,7 @@ The critical characteristic of this dataset is its **scale imbalance**: CO₂ va
 
 ```python
 # ─────────────────────────────────────────────
-# Dataset 2 : libsvm (news20.binary)
+# Dataset 2: libsvm (news20.binary)
 # ─────────────────────────────────────────────
 from libsvmdata import fetch_libsvm
 X, y = fetch_libsvm('news20.binary')
@@ -323,7 +322,7 @@ The `news20.binary` dataset from the LibSVM repository is a classic text classif
 
 ```python
 # ─────────────────────────────────────────────
-# Dataset 3 : Simulated (synthetic data)
+# Dataset 3: Simulated (synthetic data)
 # ─────────────────────────────────────────────
 print("📊 Dataset Simulated")
 print(f"  Config 1 : n=300,  p=1000")
