@@ -469,4 +469,79 @@ print("Figure 1: Optimization landscape — effect of normalization")
 
 ```
 
-<img alt="Comparison of Solvers" src="https://github.com/madou-sow/benchmark_linear_svm_binary_classif_no_intercept/blob/main/figures/figure1_conditionnement.png"  title="Comparison of Solvers"/>
+<img alt="Optimization landscape — effect of normalization" src="https://github.com/madou-sow/benchmark_linear_svm_binary_classif_no_intercept/blob/main/figures/figure1_conditionnement.png"  title="Optimization landscape — effect of normalization"/>
+
+
+### 5.3 Dataset `svm_cluster_ss` — Normalized data
+
+After applying the `StandardScaler` ($\tilde{x}_{ij} = (x_{ij} - \mu_j)/\sigma_j$), The results are spectacular :
+
+| Solver | Objective P(β) (C=1.0) | Time |
+|:---|:---:|:---:|
+| **Sklearn** | **~287** ✅ | **0.0013s** ⭐ |
+| **Lightning** | **~287** ✅ | 0.006s |
+| **CD** | **~287** ✅ | 14.8s |
+| **L-BFGS-B** | **~287** ✅ | 0.16s |
+
+> ✅ **All solvers converge to the same global optimum**, normalization has eliminated the confounding factor due to poor conditioning.
+
+### 5.4 Simulated Dataset — High Dimensionality (n=1000, p=300)
+
+Lightning stands out as the speed champion (0.24s vs. 1.64s for Sklearn, a factor of ~7). SDCA algorithms are designed for this regime: each stochastic update is lightweight ($O(p)$) and convergence in expected value is guaranteed.
+
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+fig, axes = plt.subplots(1, 2, figsize=(14, 5))
+fig.suptitle("Comparison of solvers", fontsize=14, fontweight='bold', color='#1F3864')
+
+colors = ['#2E74B5', '#E74C3C', '#27AE60', '#F39C12']
+solvers = ['Sklearn', 'Lightning', 'CD', 'L-BFGS-B']
+
+# ── Figure 1: Target values — raw and normalized svm_cluster
+ax1 = axes[0]
+obj_brut = [817.45, 226.68, float('nan'), float('nan')]
+obj_norm = [287, 287, 287, 287]
+x = np.arange(len(solvers))
+width = 0.35
+bars1 = ax1.bar(x - width/2, obj_brut, width, label='Raw data', color=colors, alpha=0.6, edgecolor='white')
+bars2 = ax1.bar(x + width/2, obj_norm, width, label='Standardized data', color=colors, alpha=1.0, edgecolor='white')
+ax1.axhline(287, color='red', linestyle='--', linewidth=1.5, alpha=0.7, label='Optimum global (~287)')
+ax1.set_xticks(x)
+ax1.set_xticklabels(solvers, fontsize=10)
+ax1.set_ylabel("Objective value P(β)", fontsize=11)
+ax1.set_title("svm_cluster (C=1.0) : raw vs. normalized", fontweight='bold', color='#1F3864')
+ax1.legend(fontsize=9)
+ax1.set_facecolor('#F8F9FA')
+ax1.grid(axis='y', alpha=0.4)
+for bar, val in zip(bars1, obj_brut):
+    if not np.isnan(val):
+        ax1.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 10,
+                 f'{val:.0f}', ha='center', va='bottom', fontsize=8, fontweight='bold')
+
+# ── Figure 2: Convergence Time — Simulated (n=1000, p=300)
+ax2 = axes[1]
+times = [1.64, 0.24, 1.85, 8.02]
+bars = ax2.bar(solvers, times, color=colors, edgecolor='white', linewidth=1.5)
+ax2.set_ylabel("Convergence time (seconds)", fontsize=11)
+ax2.set_title("Simulated (n=1000, p=300, C=1.0) : speed", fontweight='bold', color='#1F3864')
+ax2.set_facecolor('#F8F9FA')
+ax2.grid(axis='y', alpha=0.4)
+for bar, val in zip(bars, times):
+    ax2.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.1,
+             f'{val:.2f}s', ha='center', va='bottom', fontsize=10, fontweight='bold')
+ax2.bar(solvers[1], times[1], color=colors[1], edgecolor='gold', linewidth=3)  # highlight Lightning
+ax2.text(0.5, 0.92, '⭐ Fastest Lightning (×7 vs Sklearn)',
+         transform=ax2.transAxes, ha='center', fontsize=9,
+         color='#1F3864', fontweight='bold',
+         bbox=dict(boxstyle='round', facecolor='#FEF9E7', edgecolor='#F39C12', alpha=0.9))
+
+plt.tight_layout()
+plt.savefig('~/benchmark_linear_svm_binary_classif_no_intercept/outputs/figure2_comparaison.png', dpi=120, bbox_inches='tight')
+plt.show()
+print("Figure 2: Comparison of solvers")
+
+```
+<img alt="Comparison of solvers — effect of normalization" src="https://github.com/madou-sow/benchmark_linear_svm_binary_classif_no_intercept/blob/main/figures/figure2_comparaison.png"  title="Comparison of solvers"/>
