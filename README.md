@@ -255,7 +255,7 @@ This function is called identically for every solver, guaranteeing a fair compar
 
 #### 4.2.1 `svm_cluster` — Small Real-World Data
 
-'''
+```python
 import pandas as pd
 import os
 
@@ -266,11 +266,11 @@ import os
 # Problem: Scale imbalance → poor conditioning
 
 # Loading (adjust path if necessary)
-# csv_path = 'datasets/cluster1data5120w512.csv'
-# df = pd.read_csv(csv_path)
-# X_raw = df[['CO2', 'T(°C)']].values
-# y = np.where(df['Cluster'].values ​​== 1, 1., -1.)
-'''
+csv_path = 'datasets/cluster1data5120w512.csv'
+df = pd.read_csv(csv_path)
+X_raw = df[['CO2', 'T(°C)']].values
+y = np.where(df['Cluster'].values ​​== 1, 1., -1.)
+```
 
 This dataset contains real air-quality measurements from approximately $n = 500$ samples with $p = 2$ features: CO₂ concentration (range 200–400 ppm) and temperature T(°C) (range 18–24°C). The cluster labels are binarized to $\{-1, +1\}$.
 
