@@ -10,8 +10,8 @@
 
 > **Tools Used :** Benchopt Framework is an open-source benchmarking framework for optimization algorithms that guarantees the reproducibility and fairness of comparisons
 
-
-## Support Vector Machines: Theoretical Foundations
+## Introduction and Context
+### Support Vector Machines: Theoretical Foundations
 
 Support Vector Machines (SVMs) are one of the most important classes of supervised learning algorithms in the history of machine learning. Developed in the 1990s based on the theoretical considerations of Vladimir Vapnik on the statistical theory of learning (the Vapnik-Chervonenkis theory) they rely on two fundamental key ideas:
 
@@ -19,7 +19,7 @@ Support Vector Machines (SVMs) are one of the most important classes of supervis
 
 2. **The Kernel Trick**: Projecting data into a higher-dimensional representation space using a kernel function allows handling non-linearly separable cases without explicitly calculating the transformation.
 
-## Binary Classification by Linear SVM
+### Binary Classification by Linear SVM
 
 In the case of binary SVM, the algorithm separates two classes by creating an optimal hyperplane in the feature space. The primal optimization problem is written as :
 
@@ -30,7 +30,7 @@ where :
 - $\max(0, 1 - y_i x_i^\top \beta)$ : **Hinge loss** (convex, but not differentiable in $y_i x_i^\top \beta = 1$)
 - $C > 0$ : compromise parameter margin / classification errors
 
-## Problem Statement and Motivation
+### Problem Statement and Motivation
 
 While the theoretical formulation is robust, its implementation raises important practical questions :
 
