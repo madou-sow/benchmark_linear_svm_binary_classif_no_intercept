@@ -487,7 +487,7 @@ After applying the `StandardScaler` ($\tilde{x}_{ij} = (x_{ij} - \mu_j)/\sigma_j
 
 ### 5.4 Simulated Dataset — High Dimensionality (n=1000, p=300)
 
-Lightning stands out as the speed champion (0.24s vs. 1.64s for Sklearn, a factor of ~7). SDCA algorithms are designed for this regime: each stochastic update is lightweight \($O(p)$\) and convergence in expected value is guaranteed.
+Lightning stands out as the speed champion (0.24s vs. 1.64s for Sklearn, a factor of ~7). SDCA algorithms are designed for this regime: each stochastic update is lightweight $O(p)$ and convergence in expected value is guaranteed.
 
 
 ```python
