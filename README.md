@@ -292,13 +292,13 @@ print(f" Sparsity: very high (TF-IDF ∈ [0, 1])")
 print(f"  ✅ Well packaged → ideal for testing scalability")
 
 ```
-``
+```
 >📊 Dataset libsvm (news20.binary)
  Type: Text Classification (20 Newsgroups)
  Size: n >> p, high dimension
  Sparsity: very high (TF-IDF ∈ [0, 1])
   ✅ Well packaged → ideal for testing scalability
-``
+```
 
 The `news20.binary` dataset from the LibSVM repository is a classic text classification benchmark (20 Newsgroups). It features very high dimensionality ($p \gg n$), extreme sparsity (most entries are zero), and well-scaled TF-IDF features in $[0, 1]$. It is ideal for testing solver scalability on the kind of data encountered in natural language processing.
 
