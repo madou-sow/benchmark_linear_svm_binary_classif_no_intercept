@@ -10,8 +10,8 @@
 
 > **Tools Used :** Benchopt Framework is an open-source benchmarking framework for optimization algorithms that guarantees the reproducibility and fairness of comparisons
 
-## Introduction and Context
-### Support Vector Machines: Theoretical Foundations
+## 1. Introduction and Context
+### 1.1. Support Vector Machines: Theoretical Foundations
 
 Support Vector Machines (SVMs) are one of the most important classes of supervised learning algorithms in the history of machine learning. Developed in the 1990s based on the theoretical considerations of Vladimir Vapnik on the statistical theory of learning (the Vapnik-Chervonenkis theory) they rely on two fundamental key ideas:
 
@@ -19,7 +19,7 @@ Support Vector Machines (SVMs) are one of the most important classes of supervis
 
 2. **The Kernel Trick**: Projecting data into a higher-dimensional representation space using a kernel function allows handling non-linearly separable cases without explicitly calculating the transformation.
 
-### Binary Classification by Linear SVM
+### 1.2. Binary Classification by Linear SVM
 
 In the case of binary SVM, the algorithm separates two classes by creating an optimal hyperplane in the feature space. The primal optimization problem is written as :
 
@@ -30,7 +30,7 @@ where :
 - $\max(0, 1 - y_i x_i^\top \beta)$ : **Hinge loss** (convex, but not differentiable in $y_i x_i^\top \beta = 1$)
 - $C > 0$ : compromise parameter margin / classification errors
 
-### Problem Statement and Motivation
+### 1.3. Problem Statement and Motivation
 
 While the theoretical formulation is robust, its implementation raises important practical questions :
 
@@ -40,9 +40,9 @@ While the theoretical formulation is robust, its implementation raises important
 
 This study provides **empirical and quantitative** answers to these questions.
 
-## Theoretical Framework and Mathematical Formulation
+## 2. Theoretical Framework and Mathematical Formulation
 
-### Primal and Dual Formulation
+### 2.1. Primal and Dual Formulation
 
 The dual problem associated with the linear SVM, obtained using the **Karush-Kuhn-Tucker (KKT)** conditions, is expressed in terms of dual variables $\alpha_i \in [0, C]$ :
 
@@ -50,7 +50,7 @@ $$\max_{\alpha \in \mathbb{R}^n} D(\alpha) = \sum_i \alpha_i - \frac{1}{2} \alph
 
 where $Q_{ij} = y_i y_j x_i^\top x_j$ is the **Gram matrix**. Strong duality guarantees $P(\beta^*) = D(\alpha^*)$, and the primal-dual relationship is $\beta^* = \sum_i \alpha_i y_i x_i$.
 
-### Hinge Loss and its Algorithmic Implications
+### 2.2. Hinge Loss and its Algorithmic Implications
 
 The Hinge Loss $h(u) = \max(0, 1-u)$ is convex but **not differentiable at $u=1$**. This singularity has major consequences:
 
@@ -59,7 +59,7 @@ The Hinge Loss $h(u) = \max(0, 1-u)$ is convex but **not differentiable at $u=1$
 | First-order (gradient, CD) | Work on subgradients — **unaffected** |
 | Second-order (L-BFGS-B) | The Hessian is zero p.p. and undefined at $u=1$ — **penalized** |
 
-### Conditioning and Geometry
+### 2.3. Conditioning and Geometry
 
 The conditioning of the problem is measured by $\kappa(H)$, the **conditioning number** of the Hessian. A high $\kappa$ implies very elongated isovalue curves (ellipsoids). Normalization transforms:
 
@@ -67,7 +67,7 @@ $$\tilde{x}_{ij} = \frac{x_{ij} - \mu_j}{\sigma_j}$$
 
 making the Hessian more **isotropic** ($\kappa \rightarrow 1$) and allowing for rapid convergence in all directions.
 
-### The Four Solvers Studied
+### 2.4. The Four Solvers Studied
 
 | Solver | Family | Implementation | Complexity/iter |
 |:---|:---|:---|:---|
@@ -76,15 +76,15 @@ making the Hessian more **isotropic** ($\kappa \rightarrow 1$) and allowing for 
 | **CD** | Primal Coordinate Descent | Python/Numba | $O(p)$ |
 |**L-BFGS-B** | Quasi-Newton (2nd order) | SciPy (Fortran) | $O(mp)$, $m$ stored vectors |
 
-## Experimental Methodology
+## 3. Experimental Methodology
 
-### 1. The Benchopt Framework
+### 3.1. The Benchopt Framework
 
 **Benchopt** is an open-source benchmarking framework for optimization algorithms that guarantees the **reproducibility** and **fairness** of comparisons. It standardizes the interface between solvers and problems, manages dependencies, results caching, and visualization. Benchmarking suite tailored for machine learning workflows. Benchopt enforces a clean separation between problem definitions, data sources, and solver implementations, ensuring
 that every algorithm solves the same mathematical problem under identical stopping conditions. The framework automatically handles dependency management, result caching, and interactive visualization of convergence curves.  Benchopt can benchmark machine learning pipelines, including preprocessing, hyperparameters, etc. Benchopt uses accuracy metrics. Benchopt can run on many frameworks: scikit-learn, PyTorch, etc and is actively maintained. Morevoer and
 to conclude the main differences between tools, Benchopt is for supervised tasks.
 
-### 2. Installing Benchopt, cloning the benchmark and getting started
+### 3.2. Installing Benchopt, cloning the benchmark and getting started
 
 It is recommended to use benchopt within a conda environment to fully-benefit from benchopt Command Line Interface (CLI).
 run in a terminal
@@ -115,7 +115,7 @@ benchopt run ./benchmark_linear_svm_binary_classif_no_intercept -s sklearn -d si
 
 ```
 
-### 3. Directory Struture 
+### 3.3. Directory Struture 
 
 Here is the content of the directory **benchmark_linear_svm_binary_classif_no_intercept** after running the program benchopt :
 
@@ -160,7 +160,7 @@ Here is the content of the directory **benchmark_linear_svm_binary_classif_no_in
     |-sklearn.cpython-311.pyc
 ```
 
-### 4.The Heart of the Benchmark
+### 3.4.The Heart of the Benchmark
 
 **objective.py:**
 
@@ -168,7 +168,7 @@ Definition: This is the central file that defines the mathematical problem to be
 
 Role: It contains the Objective class, which specifies the loss function (here, the Hinge Loss for the SVM) and the penalty (L2). It also defines how to evaluate the performance of a solver via the evaluate_result method (calculating the primal objective).
 
-### 5.Datasets (Data)
+### 3.5.Datasets (Data)
 
 These files provide the X matrices (characteristics) and the y vectors (targets/labels) to the objective.
 
@@ -196,7 +196,7 @@ Definition: Synthetic data generator.
 
 Role: Creates controlled random data (number of samples, number of variables) to test the behavior of algorithms under specific theoretical conditions.
 
-### 6.Solvers (Optimization Algorithms)
+### 3.6.Solvers (Optimization Algorithms)
 
 Each file contains a different method for finding the β coefficients that minimize the function defined in the objective.
 
@@ -208,7 +208,7 @@ Each file contains a different method for finding the β coefficients that minim
 
 **solvers/sklearn.py:** Uses the LinearSVC class from scikit-learn (based on the liblinear library). This is often the benchmark.
 
-### 7. Outputs (Results and Analysis)
+### 3.7. Outputs (Results and Analysis)
 
 These files are automatically generated by Benchopt after the `benchopt run` command is executed.
 
