@@ -251,9 +251,26 @@ def evaluate_result(self, beta):
 
 This function is called identically for every solver, guaranteeing a fair comparison. The parameter $C$ is evaluated at two values: **C = 1.0** (moderate regularization) and **C = 0.1** (strong regularization).
 
-### 4.2 Datasets
+### 4.2 Datasets : Description and Loading
 
 #### 4.2.1 `svm_cluster` — Small Real-World Data
+
+'''
+import pandas as pd
+import os
+
+# ───────────────────────────────────────────────
+# Dataset 1: svm_cluster (real data, p=2)
+# ─────────────────────────────────────────────────
+# Characteristics: CO2 ∈ [200, 400], T(°C) ∈ [18, 24]
+# Problem: Scale imbalance → poor conditioning
+
+# Loading (adjust path if necessary)
+# csv_path = 'datasets/cluster1data5120w512.csv'
+# df = pd.read_csv(csv_path)
+# X_raw = df[['CO2', 'T(°C)']].values
+# y = np.where(df['Cluster'].values ​​== 1, 1., -1.)
+'''
 
 This dataset contains real air-quality measurements from approximately $n = 500$ samples with $p = 2$ features: CO₂ concentration (range 200–400 ppm) and temperature T(°C) (range 18–24°C). The cluster labels are binarized to $\{-1, +1\}$.
 
