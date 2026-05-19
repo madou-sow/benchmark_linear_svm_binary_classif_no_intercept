@@ -474,7 +474,7 @@ print("Figure 1: Optimization landscape — effect of normalization")
 
 ### 5.3 Dataset `svm_cluster_ss` — Normalized data
 
-After applying the `StandardScaler` $$($\tilde{x}_{ij} = (x_{ij} - \mu_j)/\sigma_j$)$$, The results are spectacular :
+After applying the `StandardScaler` (\tilde{x}_{ij} = (x_{ij} - \mu_j)/\sigma_j), The results are spectacular :
 
 | Solver | Objective P(β) (C=1.0) | Time |
 |:---|:---:|:---:|
