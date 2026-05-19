@@ -379,7 +379,7 @@ df_results.style\
         'props': [('font-weight', 'bold'), ('font-size', '13px'), ('color', '#1F3864')]
     }])
 ```
-```
+
                         Table 1 — Summary of target values P(β) and convergence time
 
 |                                | Sklearn | Lightning | CD | L-BFGS-B | 
@@ -392,7 +392,7 @@ df_results.style\
 | svm_cluster_ss (C=1.0) 	        | ~287 ✅ 	  | ~287 ✅ 	  |  ~287 ✅ 	       |  ~287 ✅ |
 | Simulated n=1000 (C=1.0) — time | 	1.64s 	   |  0.24s ⭐ |	   1.85s 	        |   8.02s |
 
-```
+
 
 ### 5.1 Dataset `libsvm` — Massive and Sparse Data
 
