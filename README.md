@@ -552,4 +552,4 @@ print("Figure 2: Comparison of solvers")
 
 ## 6. In-Depth Comparative Analysis of Solvers
 
-<img alt="Qualitative summary of strengths and weaknesses — effect of normalization" src="https://github.com/madou-sow/benchmark_linear_svm_binary_classif_no_intercept/blob/main/figures/qualitaveSummaryStrengthWeak.png"  title="Qualitative summary of strengths and weaknesses"/>
+<img alt="Qualitative summary of strengths and weaknesses — effect of normalization" src="https://github.com/madou-sow/benchmark_linear_svm_binary_classif_no_intercept/blob/main/figures/qualitativeSummaryStrengthWeak.png"  title="Qualitative summary of strengths and weaknesses"/>
