@@ -461,7 +461,7 @@ for ax, Z, title, color, desc in zip(
     plt.colorbar(cs, ax=ax, label="P(β) [normalisé]")
 
 plt.tight_layout()
-plt.savefig('/home/mamadou/big-data/cerin30032026/benchopt/benchmark/benchmark_linear_svm_binary_classif_no_intercept/outputs/figure1_conditionnement.png', dpi=120, bbox_inches='tight')
+plt.savefig('~/benchmark_linear_svm_binary_classif_no_intercept/outputs/figure1_conditionnement.png', dpi=120, bbox_inches='tight')
 plt.show()
 print("Figure 1: Optimization landscape — effect of normalization")
 
