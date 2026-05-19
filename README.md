@@ -466,6 +466,5 @@ plt.show()
 print("Figure 1: Optimization landscape — effect of normalization")
 
 ```
-
-<img alt="Comparison of Solvers" src="[https://github.com/madou-sow/Cloud-Fog-Edge-System-for-Smart-Buildings/blob/figures/figure1_conditionnement.png](https://github.com/madou-sow/benchmark_linear_svm_binary_classif_no_intercept/blob/main/figures/figure1_conditionnement.png)" title="Comparison of Solvers"/>
+[https://github.com/madou-sow/Cloud-Fog-Edge-System-for-Smart-Buildings/blob/figures/figure1_conditionnement.png](https://github.com/madou-sow/benchmark_linear_svm_binary_classif_no_intercept/blob/main/figures/figure1_conditionnement.png)
 
