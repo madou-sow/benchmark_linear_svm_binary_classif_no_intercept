@@ -549,3 +549,7 @@ print("Figure 2: Comparison of solvers")
 
 ```
 <img alt="Comparison of solvers — effect of normalization" src="https://github.com/madou-sow/benchmark_linear_svm_binary_classif_no_intercept/blob/main/figures/figure2_comparaison.png"  title="Comparison of solvers"/>
+
+## 6. In-Depth Comparative Analysis of Solvers
+
+<img alt="Qualitative summary of strengths and weaknesses — effect of normalization" src="https://github.com/madou-sow/benchmark_linear_svm_binary_classif_no_intercept/blob/main/figures/figure2_comparaison.png"  title="Qualitative summary of strengths and weaknesses"/>
