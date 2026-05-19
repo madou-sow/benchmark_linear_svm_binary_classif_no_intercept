@@ -380,7 +380,7 @@ df_results.style\
     }])
 ```
 ```
-Table 1 — Summary of target values P(β) and convergence time
+                        Table 1 — Summary of target values P(β) and convergence time
 
                                  Sklearn 	   Lightning 	  CD 	              L-BFGS-B
 Dataset/Parameter 	  	  	  	 
