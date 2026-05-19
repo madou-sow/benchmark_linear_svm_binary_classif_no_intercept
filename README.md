@@ -23,7 +23,7 @@ Support Vector Machines (SVMs) are one of the most important classes of supervis
 
 In the case of binary SVM, the algorithm separates two classes by creating an optimal hyperplane in the feature space. The primal optimization problem is written as :
 
-$$\min_{\beta \in \mathbb{R}^p} P(\beta) = \frac{1}{2}\|\beta\|_2^2 + C \sum_{i=1}^{n} \max\left(0, 1 - y_i x_i^\top \beta\right)$$
+$\min_{\beta \in \mathbb{R}^p} P(\beta) = \frac{1}{2}\|\beta\|_2^2 + C \sum_{i=1}^{n} \max\left(0, 1 - y_i x_i^\top \beta\right)$
 
 where :
 - $\frac{1}{2}\|\beta\|_2^2$ : regularization term $L_2$ (strict convexity)
