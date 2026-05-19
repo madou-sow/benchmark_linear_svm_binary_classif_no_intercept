@@ -23,7 +23,7 @@ Support Vector Machines (SVMs) are one of the most important classes of supervis
 
 In the case of binary SVM, the algorithm separates two classes by creating an optimal hyperplane in the feature space. The primal optimization problem is written as :
 
-$\min_{\beta \in \mathbb{R}^p} P(\beta) = \frac{1}{2}\|\beta\|_2^2 + C \sum_{i=1}^{n} \max\left(0, 1 - y_i x_i^\top \beta\right)$
+$$\min_{\beta \in \mathbb{R}^p} P(\beta) = \frac{1}{2}\|\beta\|_2^2 + C \sum_{i=1}^{n} \max\left(0, 1 - y_i x_i^\top \beta\right)$$
 
 where :
 - $\frac{1}{2}\|\beta\|_2^2$ : regularization term $L_2$ (strict convexity)
@@ -474,7 +474,7 @@ print("Figure 1: Optimization landscape — effect of normalization")
 
 ### 5.3 Dataset `svm_cluster_ss` — Normalized data
 
-After applying the `StandardScaler` ($\tilde{x}_{ij} = (x_{ij} - \mu_j)/\sigma_j$), The results are spectacular :
+After applying the `StandardScaler` ($$\tilde{x}_{ij} = (x_{ij} - \mu_j)/\sigma_j$$), The results are spectacular :
 
 | Solver | Objective P(β) (C=1.0) | Time |
 |:---|:---:|:---:|
