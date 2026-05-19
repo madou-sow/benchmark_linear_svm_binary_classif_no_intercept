@@ -461,10 +461,11 @@ for ax, Z, title, color, desc in zip(
     plt.colorbar(cs, ax=ax, label="P(β) [normalisé]")
 
 plt.tight_layout()
-plt.savefig('~/benchmark_linear_svm_binary_classif_no_intercept/outputs/figure1_conditionnement.png', dpi=120, bbox_inches='tight')
+plt.savefig('~/benchmark_linear_svm_binary_classif_no_intercept/figures/figure1_conditionnement.png', dpi=120, bbox_inches='tight')
 plt.show()
 print("Figure 1: Optimization landscape — effect of normalization")
 
 ```
 
+<img alt="Comparison of Solvers" src="https://github.com/madou-sow/Cloud-Fog-Edge-System-for-Smart-Buildings/blob/figures/figure1_conditionnement.png" title="Comparison of Solvers"/>
 
