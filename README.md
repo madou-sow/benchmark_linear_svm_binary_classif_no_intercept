@@ -30,6 +30,16 @@ where :
 - $\max(0, 1 - y_i x_i^\top \beta)$ : **Hinge loss** (convex, but not differentiable in $y_i x_i^\top \beta = 1$)
 - $C > 0$ : compromise parameter margin / classification errors
 
+## Problem Statement and Motivation
+
+While the theoretical formulation is robust, its implementation raises important practical questions :
+
+ - Which solver should be chosen based on the data structure ? 
+ - What is the impact of normalization on convergence ?
+ - How does the parameter $C$ influence the problem's difficulty ?
+
+This study provides **empirical and quantitative** answers to these questions.
+
 ## Experimental Methodology
 
 ### 1. The Benchopt Framework
