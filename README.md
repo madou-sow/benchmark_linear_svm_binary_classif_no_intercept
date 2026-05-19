@@ -380,8 +380,10 @@ df_results.style\
     }])
 ```
 ```
-Table 1 — Summary of target values P(β) and convergence time   	Sklearn 	Lightning 	CD 	L-BFGS-B
-Dataset / Parameter 	  	  	  	 
+Table 1 — Summary of target values P(β) and convergence time
+
+                    Sklearn 	Lightning 	CD 	L-BFGS-B
+Dataset/Parameter 	  	  	  	 
 libsvm (C=1.0) 	~2562.54 	~2562.54 	— 	~2562 (approx)
 libsvm (C=0.1) 	~902.55 ✅ 	~2033.67 ⚠️ 	— 	—
 svm_cluster brut (C=1.0) 	~817.45 ⚠️ 	~226.68 ✅ 	oscillations ⚠️ 	—
