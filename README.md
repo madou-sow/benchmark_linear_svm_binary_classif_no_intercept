@@ -159,6 +159,27 @@ Here is the content of the directory **benchmark_linear_svm_binary_classif_no_in
     |-sklearn.cpython-311.pyc
 ```
 
+Here is the content of the directory **benchmark_linear_svm_binary_classif_no_interceptsm** after running the program benchopt:
+
+```
+|-- objective.py # SVM objective function
+|-- resource_monitor.py # RAM/CPU/energy/network monitor
+|-- benchmark_runner.py # Standalone runner (no benchopt)
+|-- test_config.py # pytest configuration hooks
+|-- datasets/
+| |-- cluster1data5120w512.csv # Raw CO2/T(C) data
+| |-- cluster1data5120w512.py # Dataset (raw)
+| |-- cluster1data5120w512sm.py # Dataset (StandardScaler)
+| |-- cluster1data5120w512SS.py # Dataset (SS-normalised)
+| |-- simulated.py # Synthetic correlated data
+| ‘-- libsvm.py # news20.binary (libsvmdata)
+‘-- solvers/
+|-- cd.py # Dual CD (Numba JIT)
+|-- l_bfgs_b.py # L-BFGS-B via scipy
+|-- sklearn.py # LinearSVC (liblinear) wrapper
+‘-- lightning.py # lightning LinearSVC wrapper
+```
+
 #### 3.3.1. The Heart of the Benchmark
 
 **objective.py:**
