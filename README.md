@@ -158,28 +158,6 @@ Here is the content of the directory **benchmark_linear_svm_binary_classif_no_in
     |-lightning.cpython-311.pyc
     |-sklearn.cpython-311.pyc
 ```
-
-Here is the content of the directory **benchmark_linear_svm_binary_classif_no_interceptsm** after running the program benchopt:
-
-```
-|-- objective.py # SVM objective function
-|-- resource_monitor.py # RAM/CPU/energy/network monitor
-|-- benchmark_runner.py # Standalone runner (no benchopt)
-|-- test_config.py # pytest configuration hooks
-|-- datasets/
-| |-- cluster1data5120w512.csv # Raw CO2/T(C) data
-| |-- cluster1data5120w512.py # Dataset (raw)
-| |-- cluster1data5120w512sm.py # Dataset (StandardScaler)
-| |-- cluster1data5120w512SS.py # Dataset (SS-normalised)
-| |-- simulated.py # Synthetic correlated data
-| ‘-- libsvm.py # news20.binary (libsvmdata)
-‘-- solvers/
-|-- cd.py # Dual CD (Numba JIT)
-|-- l_bfgs_b.py # L-BFGS-B via scipy
-|-- sklearn.py # LinearSVC (liblinear) wrapper
-‘-- lightning.py # lightning LinearSVC wrapper
-```
-
 #### 3.3.1. The Heart of the Benchmark
 
 **objective.py:**
@@ -545,5 +523,82 @@ Without normalization, the CO2 variable ($\in [200, 400]$) dominates the T(°C) 
 $$H \approx X^\top X \propto \begin{pmatrix} 300^2 & \cdot \\ \cdot & 21^2 \end{pmatrix} \quad \Rightarrow \quad \kappa(H) = \frac{\lambda_{\max}}{\lambda_{\min}} \approx \left(\frac{300}{21}\right)^2 \approx 204$$
 
 After normalization : $\kappa(H) \approx 1$, the problem becomes **well conditioned**.
+
+
+## APPENDIX A
+### PROJECT STRUCTURE
+```
+benchmark_linear_svm_binary_classif_no_interceptsm/
+|-- objective.py # SVM objective function
+|-- resource_monitor.py # RAM/CPU/energy/network monitor
+|-- benchmark_runner.py # Standalone runner (no benchopt)
+|-- test_config.py # pytest configuration hooks
+|-- datasets/
+| |-- cluster1data5120w512.csv # Raw CO2/T(C) data
+| |-- cluster1data5120w512.py # Dataset (raw)
+| |-- cluster1data5120w512sm.py # Dataset (StandardScaler)
+| |-- cluster1data5120w512SS.py # Dataset (SS-normalised)
+| |-- simulated.py # Synthetic correlated data
+| ‘-- libsvm.py # news20.binary (libsvmdata)
+‘-- solvers/
+|-- cd.py # Dual CD (Numba JIT)
+|-- l_bfgs_b.py # L-BFGS-B via scipy
+|-- sklearn.py # LinearSVC (liblinear) wrapper
+‘-- lightning.py # lightning LinearSVC wrapper
+```
+
+## APPENDIX B
+### SAMPLE CO2 /TEMPERATURE DATA
+```
+CO2 T(C) Cluster
+264 20.0 2
+269 21.7 2
+262 20.1 1
+266 21.6 2
+252 20.0 1
+
+Class distribution after binarisation: Cluster 1 → y = +1
+(≈27%), other → y = −1 (≈73%). Dataset dimensions: n = 512, d = 2.
+```
+
+## APPENDIX C
+### RESOURCEMONITOR IMPLEMENTATION
+```
+class ResourceMonitor:
+ def start(self):
+  self.t0 = perf_counter()
+  self.net0 = psutil.net_io_counters()
+  self.rus0 = resource.getrusage(RUSAGE_SELF)
+  self.proc = psutil.Process(os.getpid())
+  self.proc.cpu_percent() # initialise (always 0.0)
+  self._thread = Thread(target=self._sample, daemon=True)
+  self._thread.start()
+
+ def _sample(self): # background thread
+  while self._running:
+   rss = self.proc.memory_info().rss
+   cpu = self.proc.cpu_percent()
+   self.samples.append((time(), rss, cpu))
+   sleep(0.05) # 50 ms sampling interval
+
+def stop(self):
+ self._running = False
+ self.t1 = perf_counter()
+ self.net1 = psutil.net_io_counters()
+ self.rus1 = resource.getrusage(RUSAGE_SELF)
+
+def report(self) -> dict:
+ dt = self.t1 - self.t0
+ cpu_t = delta(ru_utime + ru_stime)
+ energy = mean(cpu_pct) / 100.0 * CPU_TDP_W * dt
+ return {
+   "wall_time_s": dt,
+  "cpu_time_s": cpu_t,
+  "ram_peak_MB": max(rss_samples) / 1e6,
+  "energy_J": energy,
+  "net_pkts_recv":
+  net1.packets_recv - net0.packets_recv,
+}
+```
 
 
