@@ -603,6 +603,17 @@ def report(self) -> dict:
 
 ## Table 
 
+### Table XI : Practical solver recommendations by scenario
+
+Scenario | Recommended solver | Justification |
+| :---: | :---: | :---: |
+| Low-dimensional (*d ≤10*), energy constraint   | CD (after JIT warm-up)   | Very fast, near-zero energy on small data |
+| High-dimensional sparse (*d ≥ n*, sparse)   | sklearn[liblinear]   | Optimised sparse BLAS; 10--35*x* faster |
+| Maximum final accuracy (dense, large *n*)   | L-BFGS-B or sklearn   | L-BFGS-B marginally better; sklearn more energy-efficient |
+| Dense data, fastest per-iteration convergence   | lightning   | Active coordinate selection |
+| Normalised data, general-purpose   | sklearn[liblinear]   | Robustness and reproducibility across all tested scenarios |
+| Embedded / energy-constrained deployment   | CD or sklearn   | Avoid L-BFGS-B (26*x* higher energy) |
+
 ### Table XII:  benchopt run metadata (*cache_run_list.json*).
 
 | Run ID      |  *benchopt_allowbreak run_2026-05-05_1h43m35* |
