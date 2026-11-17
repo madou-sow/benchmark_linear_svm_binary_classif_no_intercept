@@ -607,9 +607,9 @@ def report(self) -> dict:
 | Config | Dataset | C | Key observation |
 | :---: | :---: | :---: | :---: |
 | 1  |  Simulated[300x1000$]  |  1.0  | L-BFGS-B still descending at *t=10s*; CD/sklearn at plateau  | 
-| 2 | Simulated[300x1000$] | 0.1 | lightning fastest early; CD/sklearn plateau at $\approx$12 |
+| 2 | Simulated[300x1000$] | 0.1 | lightning fastest early; CD/sklearn plateau at ≈12 |
 | 3 | Simulated[1000x300$] | 1.0 | All converge; lightning *<0.25s* |
-| 4 | Simulated[1000x300] | 0.1 | All converge to $\approx$0; lightning fastest trajectory |
+| 4 | Simulated[1000x300] | 0.1 | All converge to ≈0; lightning fastest trajectory |
 | 5 | libsvm[news20.binary]      | 1.0 | sklearn, lightning, L-BFGS-B converge by *t=10s*; CD slow |
 | 6 | libsvm[news20.binary]      | 0.1 | lightning does not converge (flat after 0.33s); sklearn fastest |
 | 7 | svm\_cluster\_sm            | 1.0 | L-BFGS-B large initial spike; CD slow tail descent |
