@@ -608,7 +608,7 @@ def report(self) -> dict:
 Scenario | Recommended solver | Justification |
 | :---: | :---: | :---: |
 | Low-dimensional (*d ≤10*), energy constraint   | CD (after JIT warm-up)   | Very fast, near-zero energy on small data |
-| High-dimensional sparse (*d ≥ n*, sparse)   | sklearn[liblinear]   | Optimised sparse BLAS; 10--35*x* faster |
+| High-dimensional sparse (*d ≥ n*, sparse)   | sklearn[liblinear]   | Optimised sparse BLAS; 10-35*x* faster |
 | Maximum final accuracy (dense, large *n*)   | L-BFGS-B or sklearn   | L-BFGS-B marginally better; sklearn more energy-efficient |
 | Dense data, fastest per-iteration convergence   | lightning   | Active coordinate selection |
 | Normalised data, general-purpose   | sklearn[liblinear]   | Robustness and reproducibility across all tested scenarios |
@@ -619,7 +619,7 @@ Scenario | Recommended solver | Justification |
 | Run ID      |  *benchopt_allowbreak run_2026-05-05_1h43m35* |
 | :---: | :---: |
 | CPU cores   | 8 |
-| RAM         | 7,GB |
+| RAM         | 7 GB |
 | Platform    | Linux 6.8.0-110-generic, x86_64 |
 | Processor   | Intel Core i5-10210U @ 1.60 GHz |
 | NumPy       | 1.26.4 |
