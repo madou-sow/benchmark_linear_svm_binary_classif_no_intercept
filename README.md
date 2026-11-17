@@ -604,8 +604,9 @@ def report(self) -> dict:
 ## Table 
 
 ### Table XII:  benchopt run metadata (*cache_run_list.json*).
-| :---: | :---: |
+
 | Run ID      |  *benchopt_allowbreak run_2026-05-05_1h43m35* |
+| :---: | :---: |
 | CPU cores   | 8 |
 | RAM         | 7,GB |
 | Platform    | Linux 6.8.0-110-generic, x86_64 |
