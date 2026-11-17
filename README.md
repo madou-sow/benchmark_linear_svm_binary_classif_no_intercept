@@ -603,6 +603,18 @@ def report(self) -> dict:
 
 ## Table 
 
+### Table XII:  benchopt run metadata (*cache_run_list.json*).
+| :---: | :---: |
+| Run ID      |  *benchopt_allowbreak run_2026-05-05_1h43m35* |
+| CPU cores   | 8 |
+| RAM         | 7,GB |
+| Platform    | Linux 6.8.0-110-generic, x86_64 |
+| Processor   | Intel Core i5-10210U @ 1.60 GHz |
+| NumPy       | 1.26.4 |
+| SciPy       | 1.17.1 |
+| Datasets    | *libsvm[news20.binary], Simulated[300 x1000],  Simulated[1000 x 300], svm_cluster, svm_cluster_sm, svm_cluster_ss* |
+| Solvers     | CD, L-BFGS-B, lightning, sklearn[liblinear]  |
+
 ### Table XIII :  Complete benchmark results---Run 1 (2026-05-05, 11:47:07).
 
 | Solver | Dataset |  C  | Objective | Acc. | Wall (s) | CPU (s)  | RAM pk (MB) | Energy (J) | Net pkt |
