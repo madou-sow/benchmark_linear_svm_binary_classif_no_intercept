@@ -601,35 +601,18 @@ def report(self) -> dict:
 }
 ```
 
-\begin{table*}[!t]
-\caption{benchopt convergence curve descriptions (eight configurations).}
-\label{tab:curves}
-\centering
-\footnotesize
-\begin{tabular}{@{}
-  >{\centering\arraybackslash}p{0.06\textwidth}
-  >{\raggedright\arraybackslash}p{0.26\textwidth}
-  >{\centering\arraybackslash}p{0.06\textwidth}
-  >{\raggedright\arraybackslash}p{0.50\textwidth}@{}}
-\toprule
-Config & Dataset & $C$ & Key observation \\
-\midrule
-1 & Simulated[$300\times1000$] & 1.0 & L-BFGS-B still descending at $t=10$\,s;
-  CD/sklearn at plateau \\
-2 & Simulated[$300\times1000$] & 0.1 & lightning fastest early;
-  CD/sklearn plateau at $\approx$12 \\
-3 & Simulated[$1000\times300$] & 1.0 & All converge; lightning $<$0.25\,s \\
-4 & Simulated[$1000\times300$] & 0.1 & All converge to $\approx$0;
-  lightning fastest trajectory \\
-5 & libsvm[news20.binary]      & 1.0 & sklearn, lightning, L-BFGS-B converge
-  by $t=10$\,s; CD slow \\
-6 & libsvm[news20.binary]      & 0.1 & lightning does not converge
-  (flat after 0.33\,s); sklearn fastest \\
-7 & svm\_cluster\_sm            & 1.0 & L-BFGS-B large initial spike;
-  CD slow tail descent \\
-8 & svm\_cluster\_sm            & 0.1 & CD flat plateau; others converge
-  in $<$0.1\,s \\
-\bottomrule
-\end{tabular}
-\end{table*}
+## Table 
+### Table XIV : Benchopt convergence curve descriptions (eight configurations)
+
+| Config | Dataset | C | Key observation |
+| :---: | :---: | :---: | :---: |
+| 1  |  Simulated[$300\times1000$]  |  1.0  | L-BFGS-B still descending at $t=10$\,s; CD/sklearn at plateau  | 
+| 2 | Simulated[$300\times1000$] | 0.1 | lightning fastest early; CD/sklearn plateau at $\approx$12 |
+| 3 | Simulated[$1000\times300$] | 1.0 | All converge; lightning $<$0.25\,s |
+| 4 | Simulated[$1000\times300$] | 0.1 | All converge to $\approx$0; lightning fastest trajectory |
+| 5 | libsvm[news20.binary]      | 1.0 | sklearn, lightning, L-BFGS-B converge by $t=10$\,s; CD slow |
+| 6 | libsvm[news20.binary]      | 0.1 | lightning does not converge (flat after 0.33\,s); sklearn fastest |
+| 7 | svm\_cluster\_sm            | 1.0 | L-BFGS-B large initial spike; CD slow tail descent |
+| 8 | svm\_cluster\_sm            | 0.1 | CD flat plateau; others converge   in $<$0.1\,s |
+
 
